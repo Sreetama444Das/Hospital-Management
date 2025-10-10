@@ -3,39 +3,26 @@ package com.sprint.hospital_management.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "physician")
+@Table(name = "physicians")
 public class Physician {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employee_id")
-    private Integer employeeId;
+    private Long id;
 
-    @Column(name = "name", nullable = false, length = 50)
     private String name;
-
-    @Column(name = "position", nullable = false, length = 50)
     private String position;
-
-    @Column(name = "ssn", nullable = false, unique = true)
-    private Integer ssn;
-
-    // Constructors
-    public Physician() {}
-
-    public Physician(String name, String position, Integer ssn) {
-        this.name = name;
-        this.position = position;
-        this.ssn = ssn;
-    }
+    private String ssn;
+    private String empId;
 
     // Getters and Setters
-    public Integer getEmployeeId() {
-        return employeeId;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,11 +41,19 @@ public class Physician {
         this.position = position;
     }
 
-    public Integer getSsn() {
+    public String getSsn() {
         return ssn;
     }
 
-    public void setSsn(Integer ssn) {
+    public void setSsn(String ssn) {
         this.ssn = ssn;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 }

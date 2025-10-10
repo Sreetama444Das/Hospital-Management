@@ -15,17 +15,52 @@ public class PhysicianController {
     private PhysicianRepository physicianRepository;
 
     @PostMapping
-    public Physician addPhysician(@RequestBody Physician physician) {
+    public Physician createPhysician(@RequestBody Physician physician) {
         return physicianRepository.save(physician);
     }
 
-    @GetMapping
-    public List<Physician> getAllPhysicians() {
-        return physicianRepository.findAll();
+    @GetMapping("/name/{name}")
+    public Physician getByName(@PathVariable String name) {
+        return physicianRepository.findByName(name).orElse(null);
     }
 
-    @GetMapping("/{employeeId}")
-    public Physician getPhysicianById(@PathVariable Integer employeeId) {
-        return physicianRepository.findById(employeeId).orElse(null);
+    @GetMapping("/position/{pos}")
+    public List<Physician> getByPosition(@PathVariable String pos) {
+        return physicianRepository.findByPosition(pos);
+    }
+
+    @GetMapping("/empid/{empid}")
+    public Physician getByEmpId(@PathVariable Long empid) {
+        return physicianRepository.findById(empid).orElse(null);
+    }
+
+    @PutMapping("/update/position/{position}/{empid}")
+    public Physician updatePosition(@PathVariable String position, @PathVariable String empid) {
+        Physician physician = physicianRepository. findById(empid).orElse(null);
+        if (physician != null) {
+            physician.setPosition(position);
+            return physicianRepository.save(physician);
+        }
+        return null;
+    }
+
+    @PutMapping("/update/name/{empid}")
+    public Physician updateName(@PathVariable Long empid, @RequestBody String newName) {
+        Physician physician = physicianRepository.findById(empid).orElse(null);
+        if (physician != null) {
+            physician.setName(newName);
+            return physicianRepository.save(physician);
+        }
+        return null;
+    }
+
+    @PutMapping("/update/ssn/{empid}")
+    public Physician updateSSN(@PathVariable Long empid, @RequestBody String newSSN) {
+        Physician physician = physicianRepository.findById(empid).orElse(null);
+        if (physician != null) {
+            physician.setSsn(newSSN);
+            return physicianRepository.save(physician);
+        }
+        return null;
     }
 }

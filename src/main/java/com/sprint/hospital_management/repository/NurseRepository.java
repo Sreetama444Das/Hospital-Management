@@ -1,5 +1,7 @@
 package com.sprint.hospital_management.repository;
 
-public class NurseRepository {
+import com.sprint.hospital_management.entity.Nurse;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+public interface NurseRepository extends JpaRepository<Nurse, String> {
 }
