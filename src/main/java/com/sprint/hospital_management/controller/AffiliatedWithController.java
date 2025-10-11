@@ -14,17 +14,17 @@ public class AffiliatedWithController {
     @Autowired
     private AffiliatedWithRepository affiliatedWithRepository;
 
-    // 🔹 PUT: Update primary affiliation
-    @PutMapping("/primary/{physicianId}")
-    public boolean updatePrimaryAffiliation(@PathVariable Integer physicianId, @RequestBody boolean primaryAffiliation) {
-        Physician physician = affiliatedWithRepository.findById(physicianId).orElse(null);
-        if (physician != null) {
-            physician.setPrimaryAffiliation(primaryAffiliation);
-            affiliatedWithRepository.save(physician);
-            return true;
-        }
-        return false;
-    }
+//    // 🔹 PUT: Update primary affiliation
+//    @PutMapping("/primary/{physicianId}")
+//    public boolean updatePrimaryAffiliation(@PathVariable Integer physicianId, @RequestBody boolean primaryAffiliation) {
+//        Physician physician = affiliatedWithRepository.findById(physicianId).orElse(null);
+//        if (physician != null) {
+//            physician.setPrimaryAffiliation(primaryAffiliation);
+//            affiliatedWithRepository.save(physician);
+//            return true;
+//        }
+//        return false;
+//    }
 
     // 🔹 POST: Create a new physician
     @PostMapping

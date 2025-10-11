@@ -34,15 +34,15 @@ public class PhysicianController {
         return physicianRepository.findById(empid).orElse(null);
     }
 
-    @PutMapping("/update/position/{position}/{empid}")
-    public Physician updatePosition(@PathVariable String position, @PathVariable String empid) {
-        Physician physician = physicianRepository. findById(empid).orElse(null);
-        if (physician != null) {
-            physician.setPosition(position);
-            return physicianRepository.save(physician);
-        }
-        return null;
-    }
+//    @PutMapping("/update/position/{position}/{empid}")
+//    public Physician updatePosition(@PathVariable String position, @PathVariable String empid) {
+//        Physician physician = physicianRepository. findById(empid).orElse(null);
+//        if (physician != null) {
+//            physician.setPosition(position);
+//            return physicianRepository.save(physician);
+//        }
+//        return null;
+//    }
 
     @PutMapping("/update/name/{empid}")
     public Physician updateName(@PathVariable Long empid, @RequestBody String newName) {

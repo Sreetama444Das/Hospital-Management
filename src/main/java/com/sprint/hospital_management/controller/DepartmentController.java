@@ -64,14 +64,14 @@ public class DepartmentController {
         return null;
     }
 
-    @GetMapping("/head/{deptId}")
-    public Physician getHeadOfDepartment(@PathVariable Integer deptId) {
-        Department dept = departmentRepository.findById(deptId).orElse(null);
-        if (dept != null) {
-            return physicianRepository.findById(dept.getHeadId()).orElse(null);
-        }
-        return null;
-    }
+//    @GetMapping("/head/{deptId}")
+//    public Physician getHeadOfDepartment(@PathVariable Integer deptId) {
+//        Department dept = departmentRepository.findById(deptId).orElse(null);
+//        if (dept != null) {
+//            return physicianRepository.findById(dept.getHeadId()).orElse(null);
+//        }
+//        return null;
+//    }
 
     @GetMapping("/headcertification/{deptId}")
     public String getHeadCertification(@PathVariable Integer deptId) {
